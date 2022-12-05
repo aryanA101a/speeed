@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Speeed",
+  "description": "More than 2x Video speeed on youtube.",
+  "version": "0.0.1",
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "permissions": ["tabs"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["https://*.youtube.com/*"],
+  "content_scripts": [
+    { "js": ["speeed.js"], "matches": ["https://*.youtube.com/*"] }
+  ],
+
+  "commands": {
+    "increase_speeed": {
+      "description": "increase speeed",
+      "suggested_key": {
+        "default": "Ctrl+M"
+      }
+    },
+    "decrease_speeed": {
+      "description": "decrease speeed",
+      "suggested_key": {
+        "default": "Ctrl+B"
+      }
+    }
+  }
+}
