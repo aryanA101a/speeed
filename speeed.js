@@ -1,6 +1,6 @@
 chrome.runtime.onMessage.addListener((message, sender, response) => {
   const { command } = message;
-  
+    
 
   if (command == "increase_speeed") {
     document.getElementsByTagName("video")[0].playbackRate += 0.25;
@@ -9,4 +9,5 @@ chrome.runtime.onMessage.addListener((message, sender, response) => {
     document.getElementsByTagName("video")[0].playbackRate -= 0.25;
     console.log(document.getElementsByTagName("video")[0].playbackRate);
   }
+  return true;
 });
