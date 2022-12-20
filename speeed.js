@@ -1,6 +1,6 @@
-const div=addSnackbar();
+const snackbar = addSnackbar();
+const video = document.getElementsByTagName("video")[0];
 
-var video = document.getElementsByTagName("video")[0];
 chrome.runtime.onMessage.addListener((message, sender, response) => {
   const { command } = message;
 
@@ -9,11 +9,10 @@ chrome.runtime.onMessage.addListener((message, sender, response) => {
     console.log(video.playbackRate);
   } else if (command == "decrease_speeed" && video.playbackRate != 0) {
     video.playbackRate -= 0.25;
-    console.log(video.playbackRate);
   }
-  div.innerHTML = video.playbackRate.toString();
+
+  snackbar.innerHTML = video.playbackRate.toString();
   showSnackbar();
-  return true;
 });
 
 function showSnackbar() {
@@ -51,9 +50,7 @@ function addSnackbar() {
 
 #snackbar.show {
   visibility: visible;
-  
-  
-}
+  }
 
 `;
   document.head.appendChild(style);
